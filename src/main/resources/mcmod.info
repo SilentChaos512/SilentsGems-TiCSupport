@@ -1,0 +1,12 @@
+[
+{
+  "modid": "silentgemstic",
+  "name": "Silent's Gems - TiC",
+  "description": "Tinkers Construct support for Silent's Gems",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "TODO",
+  "authors": [ "SilentChaos512" ],
+  "credits": ""
+}
+]
