@@ -35,6 +35,6 @@ public class TConstructMaterialGem extends Material {
 
     @Override
     public String getLocalizedName() {
-        return SilentGems.localizationHelper.getLocalizedString("item", "Gem" + (tier == EnumMaterialTier.SUPER ? "Super" : "") + gem.ordinal() + ".name");
+        return SilentGems.i18n.translatedName(tier == EnumMaterialTier.SUPER ? gem.getItemSuper() : gem.getItem());
     }
 }

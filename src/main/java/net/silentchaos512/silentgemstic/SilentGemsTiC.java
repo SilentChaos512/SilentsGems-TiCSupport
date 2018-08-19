@@ -1,5 +1,6 @@
 package net.silentchaos512.silentgemstic;
 
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -7,21 +8,29 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.silentchaos512.lib.base.IModBase;
 import net.silentchaos512.lib.registry.SRegistry;
-import net.silentchaos512.lib.util.I18nHelper;
 import net.silentchaos512.lib.util.LogHelper;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 @Mod(modid = SilentGemsTiC.MOD_ID, name = SilentGemsTiC.MOD_NAME, version = SilentGemsTiC.VERSION, dependencies = SilentGemsTiC.DEPENDENCIES)
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class SilentGemsTiC implements IModBase {
     public static final String MOD_ID = "silentgemstic";
     public static final String MOD_NAME = "Silent's Gems - TiC";
-    public static final String VERSION = "0.1.0";
-    public static final String VERSION_SILENTLIB = "2.3.12";
+    public static final String VERSION = "0.1.1";
+    public static final String VERSION_SILENTLIB = "3.0.0";
+    public static final String VERSION_SILENTGEMS = "2.8.1";
     public static final int BUILD_NUM = 0;
-    public static final String DEPENDENCIES = "required-after:silentlib@[" + VERSION_SILENTLIB + ",);required-after:silentgems;required-after:tconstruct";
+    public static final String DEPENDENCIES =
+            "required-after:silentlib@[" + VERSION_SILENTLIB + ",);" +
+                    "required-after:silentgems@[" + VERSION_SILENTGEMS + ",);" +
+                    "required-after:tconstruct";
 
     public static final LogHelper log = new LogHelper(MOD_NAME, BUILD_NUM);
-    public static final I18nHelper i18n = new I18nHelper(MOD_ID, log, true);
-    public static final SRegistry registry = new SRegistry(MOD_ID, log);
+    // Technically this registry is unused, but I don't feel like updating the proxies right now
+    public static final SRegistry registry = new SRegistry();
 
     @Mod.Instance(MOD_ID)
     public static SilentGemsTiC instance;
@@ -64,3 +73,5 @@ public class SilentGemsTiC implements IModBase {
         return BUILD_NUM;
     }
 }
+
+
