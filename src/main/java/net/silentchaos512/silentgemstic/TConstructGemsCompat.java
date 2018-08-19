@@ -18,7 +18,6 @@
 
 package net.silentchaos512.silentgemstic;
 
-import gnu.trove.map.hash.THashMap;
 import net.minecraft.init.Items;
 import net.silentchaos512.gems.api.lib.EnumMaterialTier;
 import net.silentchaos512.gems.lib.EnumGem;
@@ -26,25 +25,22 @@ import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.*;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 public class TConstructGemsCompat {
-    private static final Map<String, Material> materials = new THashMap<>();
-    private static final Map<String, MaterialIntegration> materialIntegrations = new THashMap<>();
-    private static final Map<String, CompletionStage<?>> materialIntegrationStages = new THashMap<>();
+    private static final Map<String, Material> materials = new LinkedHashMap<>();
+    private static final Map<String, MaterialIntegration> materialIntegrations = new LinkedHashMap<>();
+    private static final Map<String, CompletionStage<?>> materialIntegrationStages = new LinkedHashMap<>();
 
     public static void preInit() {
-
         SilentGemsTiC.log.info("Loading TConstruct compatibility module...");
 
         try {
-            for (EnumGem gem : EnumGem.values())
-                register(gem, EnumMaterialTier.REGULAR);
-            for (EnumGem gem : EnumGem.values())
-                register(gem, EnumMaterialTier.SUPER);
-
+            for (EnumGem gem : EnumGem.values()) register(gem, EnumMaterialTier.REGULAR);
+            for (EnumGem gem : EnumGem.values()) register(gem, EnumMaterialTier.SUPER);
             preIntegrate(materials, materialIntegrations, materialIntegrationStages);
         } catch (NoSuchMethodError ex) {
             SilentGemsTiC.log.warn("Failed to load TConstruct module. Are Tinkers tools disabled?");

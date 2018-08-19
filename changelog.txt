@@ -1,5 +1,6 @@
 0.1.1
 Fixed: Localization issues with latest SGems (#1)
+Fixed: Parts no longer display in a random order
 
 0.1.0
 First release
